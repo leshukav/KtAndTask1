@@ -17,7 +17,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/netology"
+        android:id="@+id/author"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -39,7 +39,7 @@
         android:text="@sample/post.json/data/published"
         app:layout_constraintBottom_toBottomOf="@id/avatar"
         app:layout_constraintStart_toEndOf="@id/avatar"
-        app:layout_constraintTop_toBottomOf="@id/netology" />
+        app:layout_constraintTop_toBottomOf="@id/author" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier1"
@@ -56,15 +56,12 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_baseline_more_vert_24"
-        app:layout_constraintBottom_toBottomOf="@id/netology"
+        app:layout_constraintBottom_toBottomOf="@id/author"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/netology"
-
-
-        />
+        app:layout_constraintTop_toTopOf="@id/author" />
 
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -81,10 +78,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="text" />
+        app:constraint_referenced_ids="content" />
 
     <ImageButton
-        android:id="@+id/ibutton2"
+        android:id="@+id/like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -95,18 +92,18 @@
         app:layout_goneMarginTop="10dp" />
 
     <ImageButton
-        android:id="@+id/ibutton3"
+        android:id="@+id/share"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_action"
-        app:layout_constraintStart_toEndOf="@id/ibutton2"
+        app:layout_constraintStart_toEndOf="@id/like"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
         app:layout_goneMarginTop="10dp" />
 
     <ImageButton
-        android:id="@+id/ibutton4"
+        android:id="@+id/view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
@@ -114,8 +111,36 @@
         android:src="@drawable/ic_action_visibility"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
-        app:layout_goneMarginTop="10dp"
+        app:layout_goneMarginTop="10dp" />
 
-        />
+    <TextView
+        android:id="@+id/likeCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="1"
+        app:layout_constraintStart_toEndOf="@id/like"
+        app:layout_constraintTop_toBottomOf="@id/barrier2"
+        app:layout_goneMarginTop="10dp" />
 
+
+    <TextView
+        android:id="@+id/shareCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="2"
+        app:layout_constraintStart_toEndOf="@id/share"
+        app:layout_constraintTop_toBottomOf="@id/barrier2"
+        app:layout_goneMarginTop="10dp" />
+
+    <TextView
+        android:id="@+id/viewCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="3"
+        app:layout_constraintStart_toEndOf="@id/view"
+        app:layout_constraintTop_toBottomOf="@id/barrier2"
+        app:layout_goneMarginTop="10dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
