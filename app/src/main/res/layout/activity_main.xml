@@ -118,7 +118,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="1"
+        android:text="0"
         app:layout_constraintStart_toEndOf="@id/like"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
         app:layout_goneMarginTop="10dp" />
@@ -129,7 +129,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="2"
+        android:text="0"
         app:layout_constraintStart_toEndOf="@id/share"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
         app:layout_goneMarginTop="10dp" />
@@ -139,7 +139,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="3"
+        android:text="0"
         app:layout_constraintStart_toEndOf="@id/view"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
         app:layout_goneMarginTop="10dp" />
