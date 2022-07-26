@@ -2,8 +2,8 @@ package ru.netology.mynmedia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.constraintlayout.widget.ConstraintLayout
 import ru.netology.mynmedia.databinding.ActivityMainBinding
+import java.math.BigDecimal.ROUND_DOWN
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
             author.text = post.author
             publish.text = post.published
             content.text = post.content
+            likeCount.text = logic(post.like)
+            shareCount.text = logic(post.shared)
             viewCount.text = post.id.toString()
             if (post.liked) {
                 like?.setImageResource(R.drawable.ic_liked_24)
@@ -32,37 +34,35 @@ class MainActivity : AppCompatActivity() {
                     if (post.liked)
                         R.drawable.ic_liked_24 else R.drawable.ic_like_24
                 )
-                if (post.liked) post.like++ else post.like--
-                likeCount.text = logic(post.like)      //post.like.toString()
-
+                if (post.liked) {
+                    post.like++
+                    likeCount.text = logic(post.like)
+                } else {
+                    post.like--
+                    likeCount.text = logic(post.like)
+                }
             }
             share?.setOnClickListener {
                 post.shared++
-                shareCount.text = logic(post.shared) //post.shared.toString()
+                binding.shareCount.text = logic(post.shared)
 
             }
 
         }
- setContentView(binding.like)
-        binding.apply {
 
-        }
     }
 
-    fun logic(clik: Int): String {
-        return when (clik) {
-            in 0..999 -> clik.toString()
-            in 1000..1099 -> "1K"
-            in 1100..1199 -> "1.1K"
-            in 1200..1299 -> "1.2K"
-            in 1300..1399 -> "1.3K"
-            in 1400..1499 -> "1.4"
-            in 1500..1599 -> "1.5"
-            in 1600..1699 -> "1.6"
-            in 1700..1799 -> "1.7"
-            in 1800..1899 -> "1.8"
-            in 1900..1999 -> "1.9"
-            else -> "и так далее если я правильно сделал эту логику?"
+    fun logic(count: Int): String {
+        return when (count) {
+            in 1000..999999 -> {
+                ((count / 1000.0).toBigDecimal().setScale(1, ROUND_DOWN).toString() + "K")
+            }
+            in 1000000..10000000 -> {
+                (count / 1_000_000.0).toBigDecimal().setScale(1, ROUND_DOWN).toString() + "M"
+            }
+            else -> {
+                count.toString()
+            }
         }
     }
 
