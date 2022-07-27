@@ -54,10 +54,13 @@ class MainActivity : AppCompatActivity() {
 
     fun logic(count: Int): String {
         return when (count) {
-            in 1000..999999 -> {
+            in 1000..9999 -> {
                 ((count / 1000.0).toBigDecimal().setScale(1, ROUND_DOWN).toString() + "K")
             }
-            in 1000000..10000000 -> {
+            in 10_000..999_999 -> {
+                ((count / 1000.0).toBigDecimal().setScale(0, ROUND_DOWN).toString() + "K")
+            }
+            in 1_000_000..10_000_000 -> {
                 (count / 1_000_000.0).toBigDecimal().setScale(1, ROUND_DOWN).toString() + "M"
             }
             else -> {
