@@ -66,6 +66,7 @@ class MainActivity : AppCompatActivity() {
         binding.cancelButton.setOnClickListener {
             with(binding.content) {
                 setText("")
+                viewModel.cancelEdit()
                 binding.save.visibility = INVISIBLE
                 binding.group.visibility = INVISIBLE
                 binding.group.visibility = View.GONE
@@ -73,10 +74,10 @@ class MainActivity : AppCompatActivity() {
                 AndroidUtils.hideKeyboard(this)
             }
         }
-
-        binding.content.setOnClickListener {
-            binding.save.isVisible = true
+        binding.content.setOnFocusChangeListener { _, hasFocus ->
+            binding.save.isVisible = hasFocus
         }
+
         binding.save.setOnClickListener {
             with(binding.content) {
                 if (text.isNullOrBlank()) {
