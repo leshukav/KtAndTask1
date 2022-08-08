@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name">НМедиа</string>
     <string name="netology"> Нетология. Университет интернет-профессий </string>
+    <string name="post_text">Новый пост</string>
+    <string name="edit">Изменить пост</string>
 </resources>
