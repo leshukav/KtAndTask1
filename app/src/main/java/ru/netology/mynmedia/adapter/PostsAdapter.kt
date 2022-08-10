@@ -47,7 +47,8 @@ class PostViewHolder(
             likeCount.text = PostRepositoryInMemoryImpl().logic(post.like)
             shareCount.text = PostRepositoryInMemoryImpl().logic(post.shared)
             viewCount.text = post.id.toString()
-            liked.setImageResource(if (post.likedMy) R.drawable.ic_liked_24 else R.drawable.ic_like_24)
+            liked.isChecked = post.likedMy
+            //   liked.setImageResource(if (post.likedMy) R.drawable.ic_liked_24 else R.drawable.ic_like_24)
 
             share.setOnClickListener {
                 interactionListener.onShare(post)

@@ -6,7 +6,6 @@
     android:layout_height="wrap_content">
 
 
-
     <ImageView
         android:id="@+id/avatar"
         android:layout_width="wrap_content"
@@ -64,6 +63,7 @@
         android:id="@+id/content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:text="@sample/post.json/data/text"
@@ -80,16 +80,18 @@
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="content" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/liked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:checkable="true"
         android:layout_marginStart="10dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_like_24"
+        android:button="@drawable/ic_liked_24"
+        android:contentDescription="Like"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
-        app:layout_goneMarginTop="10dp" />
+        style="@style/Widget.AppTheme.LikeCheckBox"
+         />
 
     <ImageButton
         android:id="@+id/share"
@@ -118,10 +120,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        tools:text="0"
         app:layout_constraintStart_toEndOf="@id/liked"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
-        app:layout_goneMarginTop="10dp" />
+        app:layout_goneMarginTop="10dp"
+        tools:text="0" />
 
 
     <TextView
@@ -129,19 +131,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        tools:text="0"
         app:layout_constraintStart_toEndOf="@id/share"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
-        app:layout_goneMarginTop="10dp" />
+        app:layout_goneMarginTop="10dp"
+        tools:text="0" />
 
     <TextView
         android:id="@+id/viewCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        tools:text="0"
         app:layout_constraintStart_toEndOf="@id/view"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
-        app:layout_goneMarginTop="10dp" />
+        app:layout_goneMarginTop="10dp"
+        tools:text="0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
