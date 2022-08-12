@@ -3,6 +3,8 @@
     <string name="netology">Netology. University of Internet Professions</string>
     <string name="post_text">New post</string>
     <string name="edit">Edit post</string>
+    <string name="chooser_share_post">Поделиться постом</string>
+    <string name="error_empty_content">No message</string>
 
 
 </resources>

@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="top"
-        app:constraint_referenced_ids="content,save,edit_image,cancel_button"
+        app:constraint_referenced_ids="save,edit_image,cancel_button"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -98,5 +98,13 @@
         android:visibility="gone"
         app:constraint_referenced_ids="edit_image,cancel_button,edit_content,text_icon" />
 
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/edd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_add_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="16dp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

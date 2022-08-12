@@ -1,5 +1,8 @@
 package ru.netology.mynmedia.repository
 
+import android.content.Intent
+import android.provider.Settings.Global.getString
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.netology.mynmedia.Post

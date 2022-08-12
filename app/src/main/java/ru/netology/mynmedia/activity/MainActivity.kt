@@ -1,9 +1,11 @@
 package ru.netology.mynmedia.activity
 
 
+import android.content.Intent
 import ru.netology.mynmedia.adapter.PostsAdapter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
@@ -13,20 +15,36 @@ import ru.netology.mynmedia.viewmodel.PostViewModel
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import ru.netology.mynmedia.Post
+import ru.netology.mynmedia.activity.NewPostActivity
+import ru.netology.mynmedia.R.string.*
 import ru.netology.mynmedia.adapter.OnInteractionListener
 import ru.netology.mynmedia.util.AndroidUtils
-
+import androidx.activity.ComponentActivity
+import androidx.activity.result.launch
 
 class MainActivity : AppCompatActivity() {
 
     val viewModel: PostViewModel by viewModels()
 
+    val newPostContract = registerForActivityResult(NewPostActivity.Contract) { text ->
+        if (text.isNullOrBlank()) {
+            Toast.makeText(
+                this@MainActivity,
+                "Content can't be empty",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        viewModel.changeContent(text.toString())
+        viewModel.save()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val adapter = PostsAdapter(object : OnInteractionListener {
+
+
             override fun onLike(post: Post) {
                 viewModel.likeById(post.id)
             }
@@ -41,6 +59,13 @@ class MainActivity : AppCompatActivity() {
 
             override fun onShare(post: Post) {
                 viewModel.shareById(post.id)
+                val intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, post.content)
+                    type = "text/plain"
+                }
+                val intentChooser = Intent.createChooser(intent, getString(chooser_share_post))
+                startActivity(intentChooser)
             }
         })
 
@@ -78,26 +103,31 @@ class MainActivity : AppCompatActivity() {
             binding.save.isVisible = hasFocus
         }
 
+        binding.edd.setOnClickListener{
+            newPostContract.launch()
+        }
+
         binding.save.setOnClickListener {
-            with(binding.content) {
-                if (text.isNullOrBlank()) {
-                    Toast.makeText(
-                        this@MainActivity,
-                        "Content can't be empty",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    return@setOnClickListener
-                }
-                viewModel.changeContent(text.toString())
-                viewModel.save()
-                setText("")
-                binding.save.visibility = INVISIBLE
-                binding.group.visibility = INVISIBLE
-                binding.group.visibility = View.GONE
-                clearFocus()
-                AndroidUtils.hideKeyboard(this)
+
+   //         with(binding.content) {
+    //            if (text.isNullOrBlank()) {
+    //                Toast.makeText(
+    //                    this@MainActivity,
+    //                    "Content can't be empty",
+     //                   Toast.LENGTH_SHORT
+     //               ).show()
+     //               return@setOnClickListener
+      //          }
+      //          viewModel.changeContent(text.toString())
+      //          viewModel.save()
+      //          setText("")
+      //          binding.save.visibility = INVISIBLE
+     //           binding.group.visibility = INVISIBLE
+     //           binding.group.visibility = View.GONE
+      //          clearFocus()
+      //          AndroidUtils.hideKeyboard(this)
             }
         }
 
     }
-}
+

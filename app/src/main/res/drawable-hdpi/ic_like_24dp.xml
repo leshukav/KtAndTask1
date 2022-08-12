@@ -3,9 +3,8 @@
  <item
      android:drawable="@drawable/ic_liked_24"
      android:state_checked="true"
-     android:color="@color/red"
      />
     <item
         android:drawable="@drawable/ic_like_24"
-        android:color="@color/black" />
+         />
 </selector>

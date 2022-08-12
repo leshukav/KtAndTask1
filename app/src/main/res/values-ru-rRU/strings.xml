@@ -4,4 +4,6 @@
     <string name="netology"> Нетология. Университет интернет-профессий </string>
     <string name="post_text">Новый пост</string>
     <string name="edit">Изменить пост</string>
+    <string name="chooser_share_post">Поделиться постом</string>
+    <string name="error_empty_content">Нет сообщения</string>
 </resources>
